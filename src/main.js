@@ -1,4 +1,17 @@
 import { createApp } from "vue";
+import router from "./router";
+import { createPinia } from "pinia";
 import App from "./App.vue";
+import Error from "@/components/Error.vue";
+import Spin from "@/components/Spin.vue";
 import "./index.css";
-createApp(App).mount("#app");
+import { initializeFirebase } from "./firebase";
+
+initializeFirebase;
+const pinia = createPinia();
+const app = createApp(App);
+app.component("Error", Error);
+app.component("Spin", Spin);
+app.use(router);
+app.use(pinia);
+app.mount("#app");
