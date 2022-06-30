@@ -13,12 +13,12 @@ import { onMounted, ref } from "vue";
         <div class="p-4 bg-white rounded-lg h-36 shadow"></div>
       </div>
       <div class="lg:flex grow lg:space-x-8 lg:space-y-0 space-y-8 py-8">
-        <div class="bg-white w-full h-full overflow-auto rounded-lg shadow">
-          a
-        </div>
-        <div class="bg-white w-full h-full overflow-auto rounded-lg shadow">
-          a
-        </div>
+        <div
+          class="bg-white w-full h-full overflow-auto rounded-lg shadow"
+        ></div>
+        <div
+          class="bg-white w-full h-full overflow-auto rounded-lg shadow"
+        ></div>
       </div>
     </div>
   </div>
