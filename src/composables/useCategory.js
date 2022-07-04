@@ -72,17 +72,12 @@ export default function useCategories() {
     categorySnapshot.forEach((doc) => {
       let category = doc.data();
       category.id = doc.id;
-      getImage(category.image).then((url) => {
-        category.url = url;
-        categories.value.push(category);
-      });
-
+      categories.value.push(category);
       chks.value.push({
         id: category.id,
         value: false,
       });
     });
-    console.log(categories.value);
     loading.value = 0;
   };
 
@@ -98,13 +93,17 @@ export default function useCategories() {
       `categories_icon/${category.image.name}`
     );
 
-    uploadBytes(storageRef, category.image).then((snapshot) => {
+    await uploadBytes(storageRef, category.image).then((snapshot) => {
       console.log("Uploaded a blob or file!");
+    });
+
+    await getImage(`categories_icon/${category.image.name}`).then((url) => {
+      category.url = url;
     });
 
     await addDoc(categoryColRef, {
       name: category.name,
-      image: `categories_icon/${category.image.name}`,
+      image: category.url,
     }).catch((err) => {
       errors.value = err.message;
       loading.value = 0;
@@ -200,9 +199,15 @@ export default function useCategories() {
         console.log("Uploaded a blob or file!");
       });
 
+      await getImage(`categories_icon/${category.value.image.name}`).then(
+        (url) => {
+          category.value.url = url;
+        }
+      );
+
       await updateDoc(ref, {
         name: category.value.name,
-        image: `categories_icon/${category.value.image.name}`,
+        image: category.value.url,
       }).catch((err) => {
         errors.value = err.message;
       });

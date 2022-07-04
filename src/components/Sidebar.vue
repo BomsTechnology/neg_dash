@@ -31,7 +31,7 @@ const logOut = () => {
 </script>
 
 <template>
-  <div class="relative h-screen">
+  <div class="relative h-screen z-50">
     <transition
       enter-active-class="transition duration-1000 "
       enter-from-class="-translate-x-full"

@@ -14,7 +14,7 @@ export const useUserStore = defineStore("userStore", {
           (user) => {
             removeListener();
             this.currentUser = user;
-            // console.log(user.photoURL);
+            // console.log(user.phoneNumber);
             resolve(user);
           },
           reject

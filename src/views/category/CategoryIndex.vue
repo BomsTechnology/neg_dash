@@ -133,8 +133,8 @@ onMounted(() => {
             </div>
           </td>
           <td class="px-6 py-4">
-            <div class="h-20 w-20 overflow-hidden rounded-full">
-              <img :src="category.url" :alt="category.name" />
+            <div class="h-10 w-10 overflow-hidden rounded-full">
+              <img :src="category.image" :alt="category.name" />
             </div>
           </td>
           <td
